@@ -57,5 +57,10 @@ public class OptionService {
 		return rt;
 	}
 	
+	public List<Option> queryOption(int groupId) {
+		List<Option> list = optionDao.queryOption(groupId);
+		
+		return list;
+	}
 	
 }

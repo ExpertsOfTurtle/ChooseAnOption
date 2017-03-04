@@ -1,0 +1,6 @@
+<div>
+	<p>query option</p>
+	#foreach ($option in $optionList)
+		<p>id=${option.optionname}&#160;&#160;&#160;¸ÅÂÊ=${option.probability}</p>
+	#end
+</div>

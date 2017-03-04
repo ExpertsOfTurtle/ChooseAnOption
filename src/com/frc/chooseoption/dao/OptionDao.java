@@ -71,19 +71,16 @@ public class OptionDao {
 		return rt;
 	}
 	
-	public List<Option> queryOption(int optionId, String optionName) {
-		logger.debug("Query Option [id={},optionName like {}]", optionId, optionName);
+	public List<Option> queryOption(int groupId) {
+		logger.debug("Query Option [id={}]", groupId);
 		SqlSession session = sessionFactory.openSession();
 		
 		OptionMapper mapper = session.getMapper(OptionMapper.class);
 		
 		OptionExample example = new OptionExample();
 		Criteria criteria = example.createCriteria();
-		if (optionId > 0) {
-			criteria.andGroupidEqualTo(optionId);
-		}
-		if (!StringUtil.isEmpty(optionName)) {
-			criteria.andOptionnameLike("%" + optionName + "%");
+		if (groupId > 0) {
+			criteria.andGroupidEqualTo(groupId);
 		}
 		
 		List<Option> list = mapper.selectByExample(example);

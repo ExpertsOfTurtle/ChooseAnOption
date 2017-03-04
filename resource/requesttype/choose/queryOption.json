@@ -1,0 +1,8 @@
+{
+	"requestBeanType" : "com.frc.chooseoption.beans.QueryOptionRequest",
+	"handlers" : [
+		"QueryOptionHandler"
+	],
+	"response" : "vm/choose/group/queryOption.vm",
+	"error" : "vm/error.vm"
+}
