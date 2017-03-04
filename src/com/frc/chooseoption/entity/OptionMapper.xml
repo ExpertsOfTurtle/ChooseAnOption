@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.frc.chooseoption.entity.OptionMapper">
+  <resultMap id="BaseResultMap" type="com.frc.chooseoption.entity.Option">
+    <id column="optionid" jdbcType="INTEGER" property="optionid" />
+    <result column="groupid" jdbcType="INTEGER" property="groupid" />
+    <result column="optionname" jdbcType="VARCHAR" property="optionname" />
+    <result column="probability" jdbcType="INTEGER" property="probability" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    optionid, groupid, optionname, probability
+  </sql>
+  <select id="selectByExample" parameterType="com.frc.chooseoption.entity.OptionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from options
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from options
+    where optionid = #{optionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from options
+    where optionid = #{optionid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.frc.chooseoption.entity.OptionExample">
+    delete from options
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.frc.chooseoption.entity.Option"
+  useGeneratedKeys="true" keyProperty="optionid">
+    insert into options (optionid, groupid, optionname, 
+      probability)
+    values (#{optionid,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, #{optionname,jdbcType=VARCHAR}, 
+      #{probability,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.frc.chooseoption.entity.Option"  
+  useGeneratedKeys="true" keyProperty="optionid">
+    insert into options
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="optionid != null">
+        optionid,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+      <if test="optionname != null">
+        optionname,
+      </if>
+      <if test="probability != null">
+        probability,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="optionid != null">
+        #{optionid,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="optionname != null">
+        #{optionname,jdbcType=VARCHAR},
+      </if>
+      <if test="probability != null">
+        #{probability,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+   <insert id="batchInsert" parameterType="java.util.List" >
+  		insert into options (groupid, optionname,probability)
+	    values
+	    <foreach collection ="list" item="option" index= "index" separator =",">
+                (
+                #{option.groupid}, 
+                #{option.optionname},
+                #{option.probability}
+                )
+        </foreach >            
+  </insert>
+  <select id="countByExample" parameterType="com.frc.chooseoption.entity.OptionExample" resultType="java.lang.Long">
+    select count(*) from options
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update options
+    <set>
+      <if test="record.optionid != null">
+        optionid = #{record.optionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupid != null">
+        groupid = #{record.groupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.optionname != null">
+        optionname = #{record.optionname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.probability != null">
+        probability = #{record.probability,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update options
+    set optionid = #{record.optionid,jdbcType=INTEGER},
+      groupid = #{record.groupid,jdbcType=INTEGER},
+      optionname = #{record.optionname,jdbcType=VARCHAR},
+      probability = #{record.probability,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.frc.chooseoption.entity.Option">
+    update options
+    <set>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="optionname != null">
+        optionname = #{optionname,jdbcType=VARCHAR},
+      </if>
+      <if test="probability != null">
+        probability = #{probability,jdbcType=INTEGER},
+      </if>
+    </set>
+    where optionid = #{optionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.frc.chooseoption.entity.Option">
+    update options
+    set groupid = #{groupid,jdbcType=INTEGER},
+      optionname = #{optionname,jdbcType=VARCHAR},
+      probability = #{probability,jdbcType=INTEGER}
+    where optionid = #{optionid,jdbcType=INTEGER}
+  </update>
+</mapper>

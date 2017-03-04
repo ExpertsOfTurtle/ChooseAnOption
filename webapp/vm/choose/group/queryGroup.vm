@@ -1,0 +1,6 @@
+<div>
+	<p>query group</p>
+	#foreach ($group in $groupList)
+		<p>id=${group.groupid}&#160;&#160;&#160;name=${group.groupname}</p>
+	#end
+</div>

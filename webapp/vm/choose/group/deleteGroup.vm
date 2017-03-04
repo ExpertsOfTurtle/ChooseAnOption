@@ -1,0 +1,4 @@
+<div>
+	<p>delete group</p>
+	total deleted [${deletionCount}] record(s)
+</div>
