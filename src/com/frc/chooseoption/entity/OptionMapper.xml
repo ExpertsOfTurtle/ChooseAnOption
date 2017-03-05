@@ -99,6 +99,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <update id="batchDelete" parameterType="java.util.List">
+  	delete from options where optionid in 
+  	<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+  		#{item}
+  	</foreach>
+  </update>
   <insert id="insert" parameterType="com.frc.chooseoption.entity.Option"
   useGeneratedKeys="true" keyProperty="optionid">
     insert into options (optionid, groupid, optionname, 

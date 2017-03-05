@@ -11,7 +11,9 @@ public interface OptionMapper {
     int deleteByExample(OptionExample example);
 
     int deleteByPrimaryKey(Integer optionid);
-
+    
+    int batchDelete(List<Integer> list);
+    
     int insert(Option record);
 
     int insertSelective(Option record);

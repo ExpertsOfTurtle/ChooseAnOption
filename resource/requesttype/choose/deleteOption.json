@@ -1,0 +1,8 @@
+{
+	"requestBeanType" : "com.frc.chooseoption.beans.DeleteOptionRequest",
+	"handlers" : [
+		"DeleteOptionHandler"
+	],
+	"response" : "vm/choose/group/deleteOption.vm",
+	"error" : "vm/error.vm"
+}

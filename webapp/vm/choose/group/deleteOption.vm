@@ -1,0 +1,4 @@
+<div>
+	<p>delete option</p>
+	total deleted [${deleteResult}] record(s)
+</div>

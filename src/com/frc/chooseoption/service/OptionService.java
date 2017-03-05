@@ -70,4 +70,9 @@ public class OptionService {
 		int rt = optionDao.udpateOption(optionIdList, optionNameList, probabilityList);
 		return rt;
 	}
+	
+	public int deleteOption(List<Integer> optionIdList) {
+		int rt = optionDao.deleteOption(optionIdList);
+		return rt;
+	}
 }

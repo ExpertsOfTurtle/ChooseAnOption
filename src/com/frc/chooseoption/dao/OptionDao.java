@@ -90,22 +90,14 @@ public class OptionDao {
 		return list;
 	}
 	
-	public int deleteGroup(int optionId, String optionName) {
-		logger.debug("Delete Option [id={},optionName like {}]", optionId, optionName);
+	public int deleteOption(List<Integer> optionIdList) {
+		logger.debug("Delete Option");
 		SqlSession session = sessionFactory.openSession();
 		
 		OptionMapper mapper = session.getMapper(OptionMapper.class);
 		
-		OptionExample example = new OptionExample();
-		Criteria criteria = example.createCriteria();
-		if (optionId > 0) {
-			criteria.andGroupidEqualTo(optionId);
-		}
-		if (!StringUtil.isEmpty(optionName)) {
-			criteria.andOptionnameLike("%" + optionName + "%");
-		}
 		
-		int rt = mapper.deleteByExample(example);
+		int rt = mapper.batchDelete(optionIdList);
 		
 		logger.debug("Deletion done. RowCount={}", rt);
 		
