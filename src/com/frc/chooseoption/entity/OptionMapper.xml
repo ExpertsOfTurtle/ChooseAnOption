@@ -207,4 +207,13 @@
       probability = #{probability,jdbcType=INTEGER}
     where optionid = #{optionid,jdbcType=INTEGER}
   </update>
+  <update id="batchUpdate" parameterType="java.util.List">
+  	<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+  		update options
+  		set
+  			optionname = #{item.optionname},
+  			probability = #{item.probability} 
+  		where optionid = #{item.optionid}
+  	</foreach>
+  </update>
 </mapper>

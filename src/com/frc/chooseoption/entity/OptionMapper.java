@@ -29,4 +29,6 @@ public interface OptionMapper {
     int updateByPrimaryKeySelective(Option record);
 
     int updateByPrimaryKey(Option record);
+    
+    int batchUpdate(List<Option> list);
 }

@@ -111,4 +111,42 @@ public class OptionDao {
 		
 		return rt;
 	}
+	public int udpateOption(List<Integer>optionIdList, 
+			List<String>optionNameList, 
+			List<Integer>probabilityList) {
+		logger.debug("batch update Option");
+		
+		if (optionIdList == null || optionIdList.size() == 0) {
+			logger.warn("optionIdList is empty");
+			return 0;
+		} else if (optionNameList == null || optionNameList.size() == 0) {
+			logger.warn("optionNameList is empty");
+			return 0;
+		} else if (probabilityList == null || probabilityList.size() == 0) {
+			logger.warn("probabilityList is empty");
+			return 0;
+		}
+		if (optionIdList.size() != optionNameList.size() || optionIdList.size() != probabilityList.size()) {
+			logger.warn("optionIdList,optionNameList,probabilityList size are different");
+			return 0;
+		}
+		
+		SqlSession session = sessionFactory.openSession();
+		OptionMapper mapper = session.getMapper(OptionMapper.class);
+		
+		List<Option> list = new ArrayList<Option>();
+		for (int i = 0; i < optionIdList.size(); i++) {
+			Option option = new Option();
+			option.setOptionid(optionIdList.get(i));
+			option.setOptionname(optionNameList.get(i));
+			option.setProbability(probabilityList.get(i));
+			list.add(option);
+		}
+		
+		int rt = mapper.batchUpdate(list);
+		
+		logger.debug("Update done. RowCount={}", rt);
+		
+		return rt;
+	}
 }

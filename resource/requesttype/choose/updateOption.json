@@ -1,0 +1,8 @@
+{
+	"requestBeanType" : "com.frc.chooseoption.beans.UpdateOptionRequest",
+	"handlers" : [
+		"UpdateOptionHandler"
+	],
+	"response" : "vm/choose/group/updateOption.vm",
+	"error" : "vm/error.vm"
+}

@@ -35,4 +35,8 @@ public class GroupService {
 	public int deleteGroup(int id, String groupName) {
 		return groupDao.deleteGroup(id, groupName);
 	}
+	
+	public int updateGroup(int id, String groupName) {
+		return groupDao.updateGroupName(id, groupName);
+	}
 }

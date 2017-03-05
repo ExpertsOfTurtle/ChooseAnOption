@@ -1,0 +1,4 @@
+<div>
+	<p>update option</p>
+	result: ${updateResult}
+</div>

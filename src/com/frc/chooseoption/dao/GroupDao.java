@@ -80,4 +80,21 @@ public class GroupDao {
 		
 		return rt;
 	}
+	
+	public int updateGroupName(int id, String groupName) {
+		logger.debug("Update OptionGroup[id={},groupName={}]", id, groupName);
+		SqlSession session = sessionFactory.openSession();
+		
+		OptionGroupMapper mapper = session.getMapper(OptionGroupMapper.class);
+		
+		OptionGroup group = new OptionGroup();
+		group.setGroupid(id);
+		group.setGroupname(groupName);
+		
+		int rt = mapper.updateByPrimaryKey(group);
+		
+		logger.debug("Update done. RowCount={}", rt);
+		
+		return rt;
+	}
 }
