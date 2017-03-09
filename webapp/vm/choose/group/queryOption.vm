@@ -1,6 +1,23 @@
-<div>
-	<p>query option</p>
-	#foreach ($option in $optionList)
-		<p>id=${option.optionid}&#160;name=${option.optionname}&#160;&#160;&#160;¸ÅÂÊ=${option.probability}</p>
-	#end
+<div class="panel-heading">${groupName}</div>
+	<div class="panel-body">
+		<ul class="nav nav-list">
+		
+			#foreach ($opt in $optionList)
+			
+				<li>
+					<div class="form-group">
+					  <label for="optionname">Ãû³Æ:</label>
+					  <input type="text" class="form-control" id="optionname" value="${opt.optionname}">
+					</div>
+					<div class="form-group">
+					  <label for="probability">¸ÅÂÊ:</label>
+					  <input type="text" class="form-control" id="probability" value="${opt.probability}">
+					</div>
+				</li>
+			
+				<hr/>
+		
+			#end
+		</ul>
+	</div>
 </div>

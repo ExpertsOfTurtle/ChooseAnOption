@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+<!-- jQuery library -->
+<script src="/boostrap/js/jquery-2.2.0.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="/boostrap/js/bootstrap.min.js"></script>
+
+<link type="text/css"
+	href="/boostrap/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">-->
+<link type="text/css" href="/boostrap/assets/css/font-awesome.min.css"
+	rel="stylesheet" />
+
+<link type="text/css" href="common.css" rel="stylesheet" />
+
+<!--[if IE 7]>
+            <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+            <![endif]-->
+<!--[if lt IE 9]>
+            <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery.ui.1.10.0.ie.css"/>
+            <![endif]-->
+<link href="/boostrap/assets/css/docs.css" rel="stylesheet">
+<link href="/boostrap/assets/js/google-code-prettify/prettify.css"
+	rel="stylesheet">
+
+<script src="/boostrap/assets/js/jquery-1.9.0.min.js" type="text/javascript"></script>
+<script src="/boostrap/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/boostrap/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+<script src="/boostrap/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
+<!--
+		<script src="../assets/js/docs.js" type="text/javascript"></script>
+		<script src="../assets/js/demo.js" type="text/javascript"></script>
+		-->
+
+<!-- for date-picker
+		-->
+
+</head>
+
+<body>
+	<div style="padding-left: 40px">
+
+		<div class="panel panel-primary"
+			style="max-width: 1000px; width: auto; ">
+			<div class="panel-heading">分类</div>
+			<div class="panel-body">
+				<div id="groupList"></div>
+			</div>
+		</div>
+		<div class="panel panel-primary"
+			style="max-width: 1000px; width: auto">
+			<div class="panel-heading">详细信息</div>
+			<div class="panel-body">
+				<div id="optionDetail"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+	<script>
+		window.onload = function() {
+			queryGroup();
+		}
+		function queryGroup() {
+			var param = {
+				"requestType":"0",
+				"groupName" : "",
+				"groupId" : "-1"
+			}
+			$.ajax({
+				type:"POST",
+				url:"/wf/main/choose/queryGroup",
+				data:JSON.stringify(param),
+				contentType: "application/json; charset=utf-8",
+				dataType:"text",
+				success:function(result) {
+					console.log(result);
+					qq = result;
+					$("#groupList").html(result);
+				},
+				error:function() {
+					console.log("error");
+				}
+			});
+		}	
+		function queryOption(id) {
+			var param = {
+				"requestType":"0",
+				"groupName" : "",
+				"groupId" : id
+			}
+			$.ajax({
+				type:"POST",
+				url:"/wf/main/choose/queryOption",
+				data:JSON.stringify(param),
+				contentType: "application/json; charset=utf-8",
+				dataType:"text",
+				success:function(result) {
+					console.log(result);
+					qq = result;
+					$("#optionDetail").html(result);
+				},
+				error:function() {
+					console.log("error");
+				}
+			});
+		}
+	</script>
+</html>

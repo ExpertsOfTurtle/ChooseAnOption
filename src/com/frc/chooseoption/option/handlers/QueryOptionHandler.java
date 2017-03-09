@@ -13,6 +13,8 @@ import com.frc.appleframework.hanlders.AbstractHandler;
 import com.frc.chooseoption.beans.CreateOptionRequest;
 import com.frc.chooseoption.beans.QueryOptionRequest;
 import com.frc.chooseoption.entity.Option;
+import com.frc.chooseoption.entity.OptionGroup;
+import com.frc.chooseoption.service.GroupService;
 import com.frc.chooseoption.service.OptionService;
 
 import net.sf.json.JSONObject;
@@ -24,6 +26,9 @@ public class QueryOptionHandler extends AbstractHandler {
 	@Autowired
 	protected OptionService optionService = null;
 	
+	@Autowired
+	protected GroupService groupService = null;
+	
 	@Override
 	public void process(IRequest request) throws AppleException {
 		QueryOptionRequest req = (QueryOptionRequest) request;
@@ -33,6 +38,12 @@ public class QueryOptionHandler extends AbstractHandler {
 		List<Option> list = optionService.queryOption(req.getGroupId());
 		
 		putRequestData("optionList", list);
+		
+		
+		List<OptionGroup> groupList =  groupService.queryGroup(req.getGroupId(), "");
+		if (groupList != null && groupList.size() == 1) {
+			putRequestData("groupName", groupList.get(0).getGroupname());
+		}
 	}
 
 }

@@ -1,6 +1,19 @@
-<div>
-	<p>query group</p>
-	#foreach ($group in $groupList)
-		<p>id=${group.groupid}&#160;&#160;&#160;name=${group.groupname}</p>
-	#end
+<div class="panel-heading">选择分类</div>
+	<table class="table table-condensed table-hover">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>名称</th>
+			</tr>
+		</thead>
+		<tbody>
+			#foreach ($group in $groupList)
+				<tr onclick="queryOption('${group.groupid}');">
+					<td>${group.groupid}</td>
+					<td>${group.groupname}</td>
+				</tr>
+			#end		
+		</tbody>
+	</table>
+	
 </div>
