@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.frc.appleframework.exception.AppleException;
 import com.frc.appleframework.util.StringUtil;
 import com.frc.chooseoption.dao.GroupDao;
 import com.frc.chooseoption.entity.OptionGroup;
@@ -23,9 +24,14 @@ public class GroupService {
 	@Autowired
 	protected GroupDao groupDao = null;
 	
+	@Autowired
+	protected GroupActivityService groupActivityService = null;
 	
-	public int addGroup(String groupName) {
-		return groupDao.addGroup(groupName);
+	
+	public int addGroup(String groupName) throws AppleException {
+		int rt = groupDao.addGroup(groupName);
+		groupActivityService.addGroupActivity("", rt, groupName);
+		return rt;
 	}
 	
 	public List<OptionGroup> queryGroup(int id, String groupName) {

@@ -14,21 +14,13 @@
 	rel="stylesheet" />
 
 <link type="text/css" href="common.css" rel="stylesheet" />
-
+<script src="/group.js"></script>
 <!--[if IE 7]>
             <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
             <![endif]-->
 <!--[if lt IE 9]>
             <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery.ui.1.10.0.ie.css"/>
             <![endif]-->
-<link href="/boostrap/assets/css/docs.css" rel="stylesheet">
-<link href="/boostrap/assets/js/google-code-prettify/prettify.css"
-	rel="stylesheet">
-
-<script src="/boostrap/assets/js/jquery-1.9.0.min.js" type="text/javascript"></script>
-<script src="/boostrap/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/boostrap/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
-<script src="/boostrap/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
 <!--
 		<script src="../assets/js/docs.js" type="text/javascript"></script>
 		<script src="../assets/js/demo.js" type="text/javascript"></script>
@@ -41,7 +33,20 @@
 
 <body>
 	<div style="padding-left: 40px">
-
+		<div id="groupMsgBox">
+			<div class="alert alert-danger" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>失败</strong><div class="content"></div>
+			</div>
+			<div class="alert alert-success" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>成功</strong><div class="content"></div>
+			</div>
+		</div>
 		<div class="panel panel-primary"
 			style="max-width: 1000px; width: auto; ">
 			<div class="panel-heading">分类</div>
@@ -62,51 +67,9 @@
 
 	<script>
 		window.onload = function() {
+			
 			queryGroup();
 		}
-		function queryGroup() {
-			var param = {
-				"requestType":"0",
-				"groupName" : "",
-				"groupId" : "-1"
-			}
-			$.ajax({
-				type:"POST",
-				url:"/wf/main/choose/queryGroup",
-				data:JSON.stringify(param),
-				contentType: "application/json; charset=utf-8",
-				dataType:"text",
-				success:function(result) {
-					console.log(result);
-					qq = result;
-					$("#groupList").html(result);
-				},
-				error:function() {
-					console.log("error");
-				}
-			});
-		}	
-		function queryOption(id) {
-			var param = {
-				"requestType":"0",
-				"groupName" : "",
-				"groupId" : id
-			}
-			$.ajax({
-				type:"POST",
-				url:"/wf/main/choose/queryOption",
-				data:JSON.stringify(param),
-				contentType: "application/json; charset=utf-8",
-				dataType:"text",
-				success:function(result) {
-					console.log(result);
-					qq = result;
-					$("#optionDetail").html(result);
-				},
-				error:function() {
-					console.log("error");
-				}
-			});
-		}
+		
 	</script>
 </html>

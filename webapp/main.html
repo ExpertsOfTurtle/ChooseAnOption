@@ -1,0 +1,345 @@
+<html>
+	<head>
+		<meta charset="utf-8"/> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" ></link>
+		<!-- jQuery library -->
+		<script src="boostrap/js/jquery-2.2.0.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="boostrap/js/bootstrap.min.js"></script>
+		
+		<link type="text/css" href="boostrap/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+		<!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">-->
+            <link type="text/css" href="boostrap/assets/css/font-awesome.min.css" rel="stylesheet" />
+			
+		<link type="text/css" href="common.css" rel="stylesheet" />
+		
+            <!--[if IE 7]>
+            <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+            <![endif]-->
+            <!--[if lt IE 9]>
+            <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery.ui.1.10.0.ie.css"/>
+            <![endif]-->
+            <!--<link href="../assets/css/docs.css" rel="stylesheet">-->
+		<!--
+		<script src="../assets/js/docs.js" type="text/javascript"></script>
+		<script src="../assets/js/demo.js" type="text/javascript"></script>
+		-->
+		
+		<!-- for date-picker
+		-->
+		<link href="boostrap/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"/>
+		<script type="text/javascript" src="boostrap/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="boostrap/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.uk.js" charset="UTF-8"></script>
+		
+		<script src="group.js"></script>
+	</head>
+	
+	<body>
+		<div style="padding:50px 40px;">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" style="padding-left:10px">
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+	<li role="presentation"><a href="#choose" aria-controls="choose" role="tab" data-toggle="tab">Choose</a></li>
+	<li role="presentation" ><a href="#task" aria-controls="task" role="tab" data-toggle="tab">Task</a></li>    
+	<li role="presentation"><a href="#punishment" aria-controls="punishment" role="tab" data-toggle="tab">Punishment</a></li>
+    <li role="presentation"><a href="#taskSummary" aria-controls="taskSummary" role="tab" data-toggle="tab">Task Summary</a></li>
+    <li role="presentation"><a href="#activity" aria-controls="activity" role="tab" data-toggle="tab">History task</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content"  style="padding:30px">
+    <div role="tabpanel" class="tab-pane active" id="profile">
+		<div class="panel panel-primary" style="max-width:500px;width:auto">
+		  <div class="panel-heading">Worldfinal</div>
+		  <div class="panel-body">
+			欠费:4RMB
+		  </div>
+		  <div class="panel-body">
+			Codeforces:4 problems
+		  </div>
+		  <div class="panel-body">
+			Sudoku:3 Medium
+		  </div>
+		  <div class="panel-footer" style="text-align:right">As of 2017-02-26</div>
+		</div>
+	</div>
+	
+	<div role="tabpanel" class="tab-pane" id="choose">
+		<div id="groupMsgBox">
+			<div class="alert alert-danger" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>失败</strong><div class="content"></div>
+			</div>
+			<div class="alert alert-success" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>成功</strong><div class="content"></div>
+			</div>
+		</div>
+		<div class="panel panel-primary"
+			style="max-width: 1000px; width: auto; ">
+			<div class="panel-heading">分类</div>
+			<div class="panel-body">
+				<div id="groupList"></div>
+			</div>
+		</div>
+		<div class="panel panel-primary"
+			style="max-width: 1000px; width: auto">
+			<div class="panel-heading">详细信息</div>
+			<div class="panel-body">
+				<div id="optionDetail"></div>
+			</div>
+		</div>
+	</div>
+	
+    <div role="tabpanel" class="tab-pane " id="task">
+		<button  class="btn btn-success" type="button" >Start</button >
+		<div class="alert">
+		<!--
+		  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+		  -->
+		  Today you need to solve a Codeforces problem
+		</div>
+		
+		<p>抽——题（50%），数独（25%），杀（25%）</p>
+	</div>
+	
+	<div role="tabpanel" class="tab-pane " id="punishment">
+		<p>增加罚题</p>
+		<div class="panel panel-primary" style="max-width:1000px;width:auto">
+		  <div class="panel-heading">添加惩罚</div>
+		  <form role="form" style="margin:20px 20px 20px">
+			  <div class="form-group">
+				<label for="userSelect">User</label>
+				<select id="userSelect" class="form-control">
+				  <option>Could</option>
+				  <option>Worldfinal</option>
+				</select>
+			  </div>
+			  <div class="form-group">
+				<label for="txtProblem">题目</label>
+				<input type="text" class="form-control" id="txtProblem" placeholder="Input the default problem">
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+		    </form>
+		</div>
+	</div>
+	<div role="tabpanel" class="tab-pane " id="taskSummary">
+		<p>列表，按日期筛选</p>
+		<p>设置状态</p>
+		<div class="panel panel-primary" style="max-width:1000px;width:auto">
+		  <div class="panel-heading">本周题目</div>
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" >
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#qfilter" aria-expanded="true" aria-controls="qfilter">Filter</a>
+							</h4>
+						</div>
+						<div id="qfilter" class="panel-collapse collapse in"  role="tabpanel" aria-labelledby="qfilter">
+							<div class="panel-body">
+								<form role="form" style="margin:20px 20px 20px">
+								  <div class="form-group">
+									<label for="filterUser">User</label>
+									<select id="filterUser" class="form-control">
+									  <option>Could</option>
+									  <option>Worldfinal</option>
+									</select>
+								  </div>
+								  <div class="form-group">
+									<label for="dateFrom">From</label>
+									<input type="text" value="2017-02-26" id="dateFrom" class="datepicker"  data-date-format="yyyy-MM-dd">
+									
+									<label for="dateTo">To</label>
+									<input type="text" value="2017-02-26" id="dateTo" class="datepicker"  data-date-format="yyyy-MM-dd">
+								  </div>
+								  <button type="submit" class="btn btn-default">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			  <table class="table table-condensed table-hover">
+				<thead>
+					<tr>
+						<th>User</th>
+						<th>Date</th>
+						<th>Problem</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="success">
+						<td>Worldfinal</td>
+						<td>2017-02-26</td>
+						<td><a href="http://codeforces.com/problemset/problem/777/C">777C</a></td>
+						<td>完成</td>
+						<td>复位</td>
+					</tr>
+					<tr class="success">
+						<td>Worldfinal</td>
+						<td>2017-02-26</td>
+						<td><a href="http://codeforces.com/problemset/problem/771/C">771C</a></td>
+						<td></td>
+						<td>Done</td>
+					</tr>
+					<tr class="info">
+						<td>Could</td>
+						<td>2017-02-26</td>
+						<td><a href="http://codeforces.com/problemset/problem/771/C">771C</a></td>
+						<td></td>
+						<td>Done</td>
+					</tr>
+					<tr class="success">
+						<td>Worldfinal</td>
+						<td>2017-02-23</td>
+						<td><a href="http://codeforces.com/problemset/problem/511/C">511C</a></td>
+						<td></td>
+						<td>Done</td>
+					</tr>
+					<tr class="info">
+						<td>Could</td>
+						<td>2017-02-23</td>
+						<td><a href="http://codeforces.com/problemset/problem/543/D">543D</a></td>
+						<td></td>
+						<td>Done</td>
+					</tr>
+					<tr class="info">
+						<td>Could</td>
+						<td>2017-02-23</td>
+						<td><a href="http://codeforces.com/problemset/problem/523/A">523A</a></td>
+						<td></td>
+						<td>Done</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel panel-primary" style="max-width:1000px;width:auto">
+		  <div class="panel-heading">本周统计</div>
+		  <table class="table table-condensed table-hover">
+			<caption></caption>
+			<thead>
+				<tr>
+					<th>User</th>
+					<th>Date</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="success">
+					<td>Worldfinal</td>
+					<td>2017-02-25</td>
+					<td>完成</td>
+				</tr>
+				<tr class="info">
+					<td>Could</td>
+					<td>2017-02-25</td>
+					<td>完成</td>
+				</tr>
+				<tr class="danger">
+					<td>Worldfinal</td>
+					<td>2017-02-26</td>
+					<td>未完成</td>
+				</tr>
+				<tr class="danger">
+					<td>Could</td>
+					<td>2017-02-26</td>
+					<td>未完成</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+    <div role="tabpanel" class="tab-pane" id="history">
+		<p>列表，按日期筛选</p>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="activity">
+		<p>列出：每日任务，每日罚题，题目标记完成，缴费成功</p>
+		<div class="panel panel-primary" style="max-width:1000px;width:auto">
+		  <div class="panel-heading">所有日志</div>
+		  <table class="table table-condensed table-hover">
+								<thead>
+									<tr>
+										<th>User</th>
+										<th>Date</th>
+										<th>Type</th>
+										<th>Remark</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="success">
+										<td>Worldfinal</td>
+										<td>2017-02-23</td>
+										<td>抽任务</td>
+										<td>抽到题目</td>
+									</tr>
+									<tr class="info">
+										<td>Could</td>
+										<td>2017-02-23</td>
+										<td>抽任务</td>
+										<td>抽到题目</td>
+									</tr>
+									<tr class="success">
+										<td>Worldfinal</td>
+										<td>2017-02-23</td>
+										<td>做任务</td>
+										<td>完成题目777C</td>
+									</tr>
+									<tr class="success">
+										<td>Worldfinal</td>
+										<td>2017-02-23</td>
+										<td>做任务</td>
+										<td>完成罚题777E</td>
+									</tr>
+									<tr class="info">
+										<td>Could</td>
+										<td>2017-02-24</td>
+										<td>惩罚</td>
+										<td>罚1题</td>
+									</tr>
+								</tbody>
+							</table>
+		</div>
+	</div>
+  </div>
+
+</div>
+		
+	</body>
+	
+	<script>
+		window.onload = function() {
+			queryGroup();
+		}
+		$('#myTabs a').click(function (e) {
+		  e.preventDefault()
+		  $(this).tab('show')
+		})
+		$('#dateFrom').datetimepicker({
+			 weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+		format:'yyyy-mm-dd'
+		});
+		$('#dateTo').datetimepicker({
+			 weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+		format:'yyyy-mm-dd'
+		});
+		$('#qfilter').collapse('hide');
+	</script>
+</html>

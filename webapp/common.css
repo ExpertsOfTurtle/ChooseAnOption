@@ -1,0 +1,24 @@
+.alert {
+	margin-top:15px;
+    padding: 20px;
+    /*background-color: #f44336;*/
+	background-color: #3abdd2;
+    color: white;
+    margin-bottom: 15px;
+	max-width:400px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: black;
+}

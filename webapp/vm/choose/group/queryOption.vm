@@ -1,23 +1,77 @@
 <div class="panel-heading">${groupName}</div>
-	<div class="panel-body">
-		<ul class="nav nav-list">
-		
+	<input type="hidden" name="groupId" id="groupId" value="${groupId}" />
+	<table class="table table-condensed table-hover">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>名称</th>
+				<th>概率</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="optionBody">
 			#foreach ($opt in $optionList)
-			
-				<li>
-					<div class="form-group">
-					  <label for="optionname">名称:</label>
-					  <input type="text" class="form-control" id="optionname" value="${opt.optionname}">
-					</div>
-					<div class="form-group">
-					  <label for="probability">概率:</label>
-					  <input type="text" class="form-control" id="probability" value="${opt.probability}">
-					</div>
-				</li>
-			
-				<hr/>
-		
-			#end
-		</ul>
+				<tr onclick=";">
+					<td>
+						${opt.optionid}
+						<input type="hidden" name="optionid" value="${opt.optionid}"></input>
+					</td>
+					<td>
+						<input type="text" class="form-control"
+						name="optionname" value="${opt.optionname}"></input>
+						<input type="hidden" name="optionnameorginal" value="${opt.optionname}"></input>
+					</td>
+					<td>
+						<input type="number" class="form-control"
+						name="probability" value="${opt.probability}"></input>
+						<input type="hidden" name="probabilityorginal" value="${opt.probability}"></input>
+					</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary dropdown-toggle" 
+									data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">ActionMenu</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#" onclick="javascript:deleteOption(${opt.optionid},this)">删除</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			#end	
+		</tbody>
+	</table>
+	<div id="emptyOptionRow" style="display:none">
+		<table>
+			<tbody>
+				<tr onclick=";">
+					<td></td>
+					<td>
+						<input type="text" class="form-control"
+						name="optionnameNew" value=""></input>
+					</td>
+					<td>
+						<input type="number" class="form-control"
+							name="probabilityNew" value=""></input>
+					</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary dropdown-toggle" 
+									data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">ActionMenu</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="javascript:deleteOption('', this)">删除</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+	<button class="btn btn-primary" onclick="insertRow()">插入一行</button>
+	<button class="btn btn-primary" onclick="submit();">提交</button>
+	
 </div>

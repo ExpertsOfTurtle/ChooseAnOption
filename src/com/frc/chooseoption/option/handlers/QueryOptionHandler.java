@@ -43,6 +43,7 @@ public class QueryOptionHandler extends AbstractHandler {
 		List<OptionGroup> groupList =  groupService.queryGroup(req.getGroupId(), "");
 		if (groupList != null && groupList.size() == 1) {
 			putRequestData("groupName", groupList.get(0).getGroupname());
+			putRequestData("groupId", groupList.get(0).getGroupid());
 		}
 	}
 

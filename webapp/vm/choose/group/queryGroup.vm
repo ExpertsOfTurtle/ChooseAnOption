@@ -4,16 +4,58 @@
 			<tr>
 				<th>id</th>
 				<th>名称</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
 			#foreach ($group in $groupList)
-				<tr onclick="queryOption('${group.groupid}');">
+				<tr onclick=";">
 					<td>${group.groupid}</td>
 					<td>${group.groupname}</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary dropdown-toggle" 
+									data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">ActionMenu</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#" onclick="javascript:deleteGroup(${group.groupid})">删除</a></li>
+								<li><a href="javascript:queryOption('${group.groupid}')">查看</a></li>
+							</ul>
+						</div>
+					</td>
 				</tr>
-			#end		
+			#end	
 		</tbody>
 	</table>
-	
+	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		创建类别
+	</button>
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						请输入要创建的类别名
+					</h4>
+				</div>
+				<div class="modal-body">
+					<input type="text" class="form-control"
+						name="groupName" value=""></input>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+					<button type="button" class="btn btn-primary" onclick="insertGroup();">
+						确认
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
 </div>
