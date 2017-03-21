@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.frc.appleframework.exception.AppleException;
 import com.turtle.activity.common.ActivityType;
-import com.turtle.activity.dao.service.ActivityService;
+import com.turtle.activity.dao.ActivityDao;
 
 import net.sf.json.JSONObject;
 
@@ -13,7 +13,7 @@ import net.sf.json.JSONObject;
 public class GroupActivityService {
 	
 	@Autowired
-	private ActivityService service = null;
+	private ActivityDao service = null;
 	
 	protected int addGroupActivity(String username, int id, String groupName) throws AppleException {
 		String result = buildAddGroupResult(id, groupName);
