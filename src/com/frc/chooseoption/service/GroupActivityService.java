@@ -18,9 +18,15 @@ public class GroupActivityService {
 	protected int addGroupActivity(String username, int id, String groupName) throws AppleException {
 		String result = buildAddGroupResult(id, groupName);
 		
-		int rt = service.addActivity(username, ActivityType.ADDGROUP.name(), result);
+		String description = buildDescription(groupName);
+		int rt = service.addActivity(username, ActivityType.ADDGROUP.name(), result, description);
 		
 		return rt;
+	}
+	
+	protected String buildDescription(String groupName) {
+		String str = String.format("创建了组[%s]", groupName);
+		return str;
 	}
 	
 	protected String buildAddGroupResult(int id, String groupName) {
