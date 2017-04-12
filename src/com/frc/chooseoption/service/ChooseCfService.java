@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.frc.chooseoption.dao.GroupDao;
 import com.frc.chooseoption.dao.OptionDao;
 import com.frc.chooseoption.dao.ProblemsDao;
 import com.frc.chooseoption.entity.Option;
@@ -18,9 +17,6 @@ public class ChooseCfService {
 
 	@Autowired
 	protected ProblemsDao problemsDao = null;
-	
-	@Autowired
-	protected GroupDao groupDao = null;
 
 	@Autowired
 	protected OptionDao optionDao = null;

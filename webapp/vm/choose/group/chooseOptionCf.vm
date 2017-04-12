@@ -3,7 +3,10 @@
 	<table class="table table-condensed table-hover">
 		<thead>
 			<tr>
-				<th>结果</th>
+				<th>题目</th>
+				<th>类型</th>
+				<th>状态</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody id="optionBody">
@@ -11,8 +14,23 @@
 				<tr onclick=";">
 					<td>
 						<input type="text" class="form-control"
-						name="problemNo" value="${opt}"></input>
-						<input type="hidden" name="problemNoorginal" value="${opt}"></input>
+						name="problemNo" value="${opt.problemNo}"></input>
+						<input type="hidden" name="problemNoorginal" value="${opt.problemNo}"></input>
+					</td>
+					<td>
+						<input type="text" class="form-control"
+						name="type" value="${opt.type}"></input>
+						<input type="hidden" name="typeorginal" value="${opt.type}"></input>
+					</td>
+					<td>
+						<input type="text" class="form-control"
+						name="status" value="${opt.status}"></input>
+						<input type="hidden" name="statusorginal" value="${opt.status}"></input>
+					</td>
+					<td>
+						<input type="text" class="form-control"
+						name="respondent" value="${opt.respondent}"></input>
+						<input type="hidden" name="respondentorginal" value="${opt.respondent}"></input>
 					</td>
 				</tr>
 			#end	

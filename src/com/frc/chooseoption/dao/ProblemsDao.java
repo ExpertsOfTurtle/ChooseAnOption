@@ -46,16 +46,14 @@ public class ProblemsDao {
 	public List<Problems> queryCf(String sdate,String edate, String type) {
 		logger.debug("Query Problems [sdate={},edate]", sdate,edate);
 		SqlSession session = sessionFactory.openSession();
-		
 		ProblemsMapper mapper = session.getMapper(ProblemsMapper.class);
 		
 		ProblemsExample example = new ProblemsExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andDateBetween(sdate, edate);
 		criteria.andTypeEqualTo(type);
-		
 		List<Problems> list = mapper.selectByExample(example);
-		
+		System.out.println(list.size());
 		logger.debug("query done. RowCount={}", list.size());
 		
 		return list;

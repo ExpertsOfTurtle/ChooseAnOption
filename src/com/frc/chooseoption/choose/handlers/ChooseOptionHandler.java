@@ -32,6 +32,10 @@ public class ChooseOptionHandler extends AbstractHandler{
 		
 		List res = chooseService.chooseoption(req.getdate(), req.getGroupid());
 		
+		if(req.getGroupid()==0||req.getGroupid()==1){
+			putRequestData("responseVM", "vm/choose/group/chooseOptionCf.vm");
+		}
+		
 		putRequestData("res", res);
 	}
 }
