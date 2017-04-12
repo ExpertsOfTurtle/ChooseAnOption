@@ -1,0 +1,71 @@
+<div class="panel-heading">problems</div>
+	<input type="hidden" name="problems" id="problems" value="${problems}" />
+	<table class="table table-condensed table-hover">
+		<thead>
+			<tr>
+				<th>题目</th>
+				<th>类型</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="optionBody">
+			#foreach ($opt in $problems)
+				<tr onclick=";">
+					<td>
+						<input type="text" class="form-control"
+						name="problemNo" value="${opt.problemNo}"></input>
+						<input type="hidden" name="problemNoorginal" value="${opt.problemNo}"></input>
+					</td>
+					<td>
+						<input type="text" class="form-control"
+						name="type" value="${opt.type}"></input>
+						<input type="hidden" name="typeorginal" value="${opt.type}"></input>
+					</td>
+					<td>
+						<input type="text" class="form-control"
+						name="status" value="${opt.status}"></input>
+						<input type="hidden" name="statusorginal" value="${opt.status}"></input>
+					</td>
+					<td>
+						<input type="text" class="form-control"
+						name="respondent" value="${opt.respondent}"></input>
+						<input type="hidden" name="respondentorginal" value="${opt.respondent}"></input>
+					</td>
+				</tr>
+			#end	
+		</tbody>
+	</table>
+	<div id="emptyOptionRow" style="display:none">
+		<table>
+			<tbody>
+				<tr onclick=";">
+					<td></td>
+					<td>
+						<input type="text" class="form-control"
+						name="optionnameNew" value=""></input>
+					</td>
+					<td>
+						<input type="number" class="form-control"
+							name="probabilityNew" value=""></input>
+					</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary dropdown-toggle" 
+									data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">ActionMenu</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="javascript:deleteOption('', this)">删除</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<button class="btn btn-primary" onclick="insertRow()">插入一行</button>
+	<button class="btn btn-primary" onclick="submit();">提交</button>
+	
+</div>

@@ -79,7 +79,7 @@ public class OptionDao {
 		
 		OptionExample example = new OptionExample();
 		Criteria criteria = example.createCriteria();
-		if (groupId > 0) {
+		if (groupId >= 0) {
 			criteria.andGroupidEqualTo(groupId);
 		}
 		
