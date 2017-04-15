@@ -16,20 +16,20 @@ import com.frc.chooseoption.entity.Problems;
 public class ChooseCfService {
 
 	@Autowired
-	protected ProblemsDao problemsDao = null;
+	public ProblemsDao problemsDao1 = null;
 
 	@Autowired
-	protected OptionDao optionDao = null;
+	public OptionDao optionDao1 = null;
 
 	public List<Problems> chooseCf(){
 		String sdate=DateUtil.getTodayDate();
 		String edate=DateUtil.getTodayDate();
 		String type="A";
 		
-		List<Problems> problems=problemsDao.queryCf(sdate, edate, type);
-		List<Option> option_wf=optionDao.queryOption(0);
-		List<Option> option_c=optionDao.queryOption(1);
-		
+		List<Option> option_wf=optionDao1.queryOption(0);
+		List<Option> option_c=optionDao1.queryOption(1);
+		List<Problems> problems=problemsDao1.queryCf(sdate, edate, type);
+
 		if(problems.isEmpty()){
 			int x = 300;
 			int y = 749;
@@ -61,7 +61,7 @@ public class ChooseCfService {
 					}
 				}
 				type_wf = String.format("http://codeforces.com/problemset/problem/%d/%s", proId,type_wf);
-				problemsDao.addProblems(type_wf, sdate, "DFS", "0", "A");
+				problemsDao1.addProblems(type_wf, sdate, "DFS", "0", "A");
 			}
 			for(int j=0;j<5;j++ ){
 				proId=(int) Math.round(Math.random()*d)+x;
@@ -73,10 +73,10 @@ public class ChooseCfService {
 					}
 				}
 				type_c = String.format("http://codeforces.com/problemset/problem/%d/%s", proId,type_c);
-				problemsDao.addProblems(type_c, sdate, "Could", "0", "A");
+				problemsDao1.addProblems(type_c, sdate, "Could", "0", "A");
 			}
 		}
-		problems=problemsDao.queryCf(sdate, edate, type);
+		problems=problemsDao1.queryCf(sdate, edate, type);
 		return problems;
 	}
 }
