@@ -32,6 +32,10 @@ public class QueryGroupHandler extends AbstractHandler {
 		
 		List<OptionGroup> list = groupService.queryGroup(req.getGroupId(), req.getGroupName());
 		
+		if(req.getRequestType().equals("forChoose")){
+			putRequestData("responseVM", "vm/choose/group/queryGroupForChoose.vm");
+		}
+		
 		putRequestData("groupList", list);
 	}
 
