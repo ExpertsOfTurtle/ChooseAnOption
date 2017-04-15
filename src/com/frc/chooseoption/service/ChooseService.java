@@ -23,15 +23,12 @@ public class ChooseService {
 
 	@Autowired
 	protected OptionDao optionDao = null;
-	@Autowired
-	protected ChooseCfService cf=null;
-	
+
 	@Autowired
 	protected ChooseCfService chooseCfService = null;
 	public List chooseoption(String date,Integer groupid){
 		List res=new ArrayList();
 		if(groupid.intValue()==0||groupid.intValue()==1){
-			res=cf.chooseCf();
 
 			res=chooseCfService.chooseCf();
 		}else{
