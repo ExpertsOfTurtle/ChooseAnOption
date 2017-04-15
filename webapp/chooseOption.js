@@ -12,6 +12,7 @@ function getIntegersFromInputs(inputs) {
 	}
 	return arr;
 }
+
 function queryGroup() {
 	var param = {
 		"requestType" : "forChoose"
@@ -32,7 +33,6 @@ function queryGroup() {
 		}
 	});
 }
-
 
 function chooseOption(groupid) {
 	var param = {

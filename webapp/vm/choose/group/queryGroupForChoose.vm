@@ -1,11 +1,11 @@
 <div class="panel-heading">选择分类</div>
-	<select class="form-control" id="GroupOption" ">
+	<select class="form-control" id="groupOption" ">
 		#foreach ($group in $groupList)
 		<option value=${group.groupid}>${group.groupname}</option>
 		#end
 	</select>
-	<span/>	
-	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="chooseOption()">
-		接受命运的安排
+	<p />
+	<button class="btn btn-primary btn-lg" onclick="javascript:chooseOption($("#groupOption").val())">
+		接受命运安排
 	</button>
 </div>

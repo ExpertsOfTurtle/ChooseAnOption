@@ -14,40 +14,12 @@
 						name="problemNo" value="${opt}"></input>
 						<input type="hidden" name="problemNoorginal" value="${opt}"></input>
 					</td>
+					<td>
+						<div>依据turtle法律第357章174条规定：选定离手，当日得变更选择，并必须依据结果实施</div>
+					</td>
 				</tr>
 			#end	
 		</tbody>
 	</table>
-	<div id="emptyOptionRow" style="display:none">
-		<table>
-			<tbody>
-				<tr onclick=";">
-					<td></td>
-					<td>
-						<input type="text" class="form-control"
-						name="optionnameNew" value=""></input>
-					</td>
-					<td>
-						<input type="number" class="form-control"
-							name="probabilityNew" value=""></input>
-					</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary dropdown-toggle" 
-									data-toggle="dropdown">
-								<span class="caret"></span>
-								<span class="sr-only">ActionMenu</span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:deleteOption('', this)">删除</a></li>
-							</ul>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<button class="btn btn-primary" onclick="insertRow()">插入一行</button>
-	<button class="btn btn-primary" onclick="submit();">提交</button>
 	
 </div>
