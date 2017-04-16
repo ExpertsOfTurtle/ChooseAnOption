@@ -10,7 +10,7 @@
 				<tr onclick=";">
 					<td>
 						<input type="text" class="form-control"
-						name="problemNo" value="${opt}"></input>
+						name="description" value="${opt.description}"></input>
 						<input type="hidden" name="problemNoorginal" value="${opt}"></input>
 					</td>
 					
