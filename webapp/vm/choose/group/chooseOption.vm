@@ -1,10 +1,9 @@
-<div class="panel-heading">problems</div>
+<div class="panel-heading"></div>
 	<input type="hidden" name="problems" id="problems" value="${res}" />
 	<table class="table table-condensed table-hover">
 		<thead>
-			<tr>
-				<th>结果</th>
-			</tr>
+			
+			
 		</thead>
 		<tbody id="optionBody">
 			#foreach ($opt in $res)
@@ -14,6 +13,9 @@
 						name="problemNo" value="${opt}"></input>
 						<input type="hidden" name="problemNoorginal" value="${opt}"></input>
 					</td>
+					
+				</tr>
+				<tr>
 					<td>
 						<div>依据turtle法律第357章174条规定：选定离手，当日得变更选择，并必须依据结果实施</div>
 					</td>

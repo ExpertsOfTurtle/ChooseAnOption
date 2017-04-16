@@ -38,7 +38,7 @@ function chooseOption(groupid) {
 	var param = {
 		"requestType" : "",
 		"date":"",
-		"groupid": [groupid]
+		"groupid": groupid
 	}
 	$.ajax({
 		type : "POST",

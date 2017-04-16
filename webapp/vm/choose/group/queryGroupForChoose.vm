@@ -5,7 +5,7 @@
 		#end
 	</select>
 	<p />
-	<button class="btn btn-primary btn-lg" onclick="javascript:chooseOption($("#groupOption").val())">
+	<button class="btn btn-primary btn-lg" onclick="javascript:chooseOption($('#groupOption').val())">
 		接受命运安排
 	</button>
 </div>
