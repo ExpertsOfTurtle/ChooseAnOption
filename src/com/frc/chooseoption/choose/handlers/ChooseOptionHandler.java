@@ -13,13 +13,14 @@ import com.frc.appleframework.hanlders.AbstractHandler;
 import com.frc.chooseoption.beans.ChooseOptionRequest;
 import com.frc.chooseoption.group.handlers.CreateGroupHandler;
 import com.frc.chooseoption.service.ChooseService;
+import com.frc.chooseoption.util.DateUtil;
 
 import net.sf.json.JSONObject;
 
 @Service("ChooseOptionHandler")
 public class ChooseOptionHandler extends AbstractHandler{
 
-	private static Logger logger  =  LoggerFactory.getLogger(CreateGroupHandler.class);
+	private static Logger logger  =  LoggerFactory.getLogger(ChooseOptionHandler.class);
 	
 	@Autowired
 	protected ChooseService chooseService = null;
@@ -29,7 +30,8 @@ public class ChooseOptionHandler extends AbstractHandler{
 		ChooseOptionRequest req = (ChooseOptionRequest) request;
 		
 		logger.debug("ChooseOptionHandler_request:" + JSONObject.fromObject(req).toString());
-		
+	
+		req.setdate(DateUtil.getTodayDate());
 		List res = chooseService.chooseoption(req.getdate(), req.getGroupid());
 		
 		if(req.getGroupid()==0||req.getGroupid()==1){
