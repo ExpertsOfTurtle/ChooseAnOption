@@ -41,9 +41,7 @@ public class ProblemsDao {
 		logger.debug("problemsId={},problemsNo={}", id, problems.getProblemNo());
 		return id;
 	}
-	
-	
-	public List<Problems> queryCf(String sdate,String edate, String type) {
+	public List<Problems> queryCf(String sdate,String edate) {
 		logger.debug("Query Problems [sdate={},edate]", sdate,edate);
 		SqlSession session = sessionFactory.openSession();
 		ProblemsMapper mapper = session.getMapper(ProblemsMapper.class);
@@ -51,7 +49,37 @@ public class ProblemsDao {
 		ProblemsExample example = new ProblemsExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andDateBetween(sdate, edate);
-		criteria.andTypeEqualTo(type);
+		List<Problems> list = mapper.selectByExample(example);
+		System.out.println(list.size());
+		logger.debug("query done. RowCount={}", list.size());
+		
+		return list;
+	}
+	
+	public List<Problems> queryCf(String sdate,String edate, String type,String status,String name) {
+		logger.debug("Query Problems [sdate={},edate]", sdate,edate);
+		SqlSession session = sessionFactory.openSession();
+		ProblemsMapper mapper = session.getMapper(ProblemsMapper.class);
+		
+		ProblemsExample example = new ProblemsExample();
+		Criteria criteria = example.createCriteria();
+		if(!sdate.isEmpty()&&!edate.isEmpty()){
+			criteria.andDateBetween(sdate, edate);
+		}else if(edate.isEmpty()){
+			criteria.andDateGreaterThanOrEqualTo(sdate);
+		}else if(sdate.isEmpty()){
+			criteria.andDateLessThanOrEqualTo(edate);
+		}
+	
+		if(!type.isEmpty()){
+			criteria.andTypeEqualTo(type);
+		}
+		if(!status.isEmpty()){
+			criteria.andStatusEqualTo(status);
+		}
+		if(!status.isEmpty()){
+			criteria.andRespondentEqualTo(name);
+		}
 		List<Problems> list = mapper.selectByExample(example);
 		System.out.println(list.size());
 		logger.debug("query done. RowCount={}", list.size());

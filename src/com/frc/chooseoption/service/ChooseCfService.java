@@ -27,7 +27,7 @@ public class ChooseCfService {
 		
 		List<Option> option_wf=optionDao1.queryOption(0);
 		List<Option> option_c=optionDao1.queryOption(1);
-		List<Problems> problems=problemsDao1.queryCf(sdate, edate, type);
+		List<Problems> problems=problemsDao1.queryCf(sdate, edate, type,"","");
 
 		if(problems.isEmpty()){
 			int x = 300;
@@ -75,7 +75,7 @@ public class ChooseCfService {
 				problemsDao1.addProblems(type_c, sdate, "Could", "0", "A");
 			}
 		}
-		problems=problemsDao1.queryCf(sdate, edate, type);
+		problems=problemsDao1.queryCf(sdate, edate, type,"","");
 		return problems;
 	}
 }

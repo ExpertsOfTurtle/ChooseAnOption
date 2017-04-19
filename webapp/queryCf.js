@@ -13,36 +13,25 @@ function getIntegersFromInputs(inputs) {
 	return arr;
 }
 
-function queryGroup() {
-	var param = {
-		"requestType" : "forChoose"
-	}
-	$.ajax({
-		type : "POST",
-		url : "wf/main/choose/queryGroup",
-		data : JSON.stringify(param),
-		contentType : "application/json; charset=utf-8",
-		dataType : "text",
-		success : function(result) {
-			console.log(result);
-			qq = result;
-			$("#groupNameList").html(result);
-		},
-		error : function() {
-			console.log("error");
-		}
-	});
-}
 
-function chooseOption(groupid) {
+function queryCfResult() {
+	var name=$("#filterUser").val();
+	var sdate=$("#dateFrom").val();
+	var edate=$("#dateTo").val();
+	var type=$("input[name='Type']:checked").val();
+	var status=$("input[name='Status']:checked").val()
+
 	var param = {
 		"requestType" : "",
-		"date":"",
-		"groupid": groupid
+		"sdate":sdate,
+		"edate":edate,
+		"type": type,
+		"status": status,
+		"name": name
 	}
 	$.ajax({
 		type : "POST",
-		url : "wf/main/choose/chooseOption",
+		url : "wf/main/choose/queryCfResult",
 		data : JSON.stringify(param),
 		contentType : "application/json; charset=utf-8",
 		dataType : "text",
@@ -55,6 +44,8 @@ function chooseOption(groupid) {
 			console.log("error");
 		}
 	});
-}
-
+	
+	function updCfStatus(problemid){
+		
+	}
 }

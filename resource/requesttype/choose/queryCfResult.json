@@ -1,0 +1,8 @@
+{
+	"requestBeanType" : "com.frc.chooseoption.beans.QueryCfRequest",
+	"handlers" : [
+		"QueryCfHandler"
+	],
+	"response" : "vm/choose/group/chooseOptionCf.vm",
+	"error" : "vm/error.vm"
+}

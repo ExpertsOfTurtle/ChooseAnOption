@@ -40,9 +40,8 @@ public class ChooseService {
 		if(groupid.intValue()==0||groupid.intValue()==1){
 			res=chooseCfService.chooseCf();
 		}else{
-			List<Activity> qryact=chooseactivity.queryActivity("CD", date,groupid.intValue());
+			List<Activity> qryact=chooseactivity.queryActivity("CD", date,date,groupid.intValue());
 			JSONObject param=new JSONObject();
-			
 			if(qryact.isEmpty()){
 				List<Option> optn=optionDao.queryOption(groupid);
 				int sum=0; 
@@ -62,7 +61,7 @@ public class ChooseService {
 				}
 				chooseactivity.addActivity("CD", param);
 			}
-			res=chooseactivity.queryActivity("CD", date,groupid.intValue());
+			res=chooseactivity.queryActivity("CD", date,date,groupid.intValue());
 			
 		}
 		return res;

@@ -6,6 +6,7 @@
 				<th>题目</th>
 				<th>类型</th>
 				<th>状态</th>
+				<th>用户</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -32,40 +33,14 @@
 						name="respondent" value="${opt.respondent}"></input>
 						<input type="hidden" name="respondentorginal" value="${opt.respondent}"></input>
 					</td>
+					<td>
+						<button class="btn btn-primary btn-lg" onclick="javascript:updCfStatus($('#problemid').val())">
+						完成
+						</button>
+					</td>
 				</tr>
 			#end	
 		</tbody>
 	</table>
-	<div id="emptyOptionRow" style="display:none">
-		<table>
-			<tbody>
-				<tr onclick=";">
-					<td></td>
-					<td>
-						<input type="text" class="form-control"
-						name="optionnameNew" value=""></input>
-					</td>
-					<td>
-						<input type="number" class="form-control"
-							name="probabilityNew" value=""></input>
-					</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary dropdown-toggle" 
-									data-toggle="dropdown">
-								<span class="caret"></span>
-								<span class="sr-only">ActionMenu</span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:deleteOption('', this)">删除</a></li>
-							</ul>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<button class="btn btn-primary" onclick="insertRow()">插入一行</button>
-	<button class="btn btn-primary" onclick="submit();">提交</button>
 	
 </div>
