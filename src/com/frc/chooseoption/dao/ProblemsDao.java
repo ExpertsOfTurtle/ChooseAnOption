@@ -77,7 +77,7 @@ public class ProblemsDao {
 		if(!status.isEmpty()){
 			criteria.andStatusEqualTo(status);
 		}
-		if(!status.isEmpty()){
+		if(!name.isEmpty()){
 			criteria.andRespondentEqualTo(name);
 		}
 		List<Problems> list = mapper.selectByExample(example);
@@ -100,7 +100,7 @@ public class ProblemsDao {
 		
 		return rt;
 	}
-	public int udpateOption(long problemsId, String status) {
+	public int udpateProblems(String problemNo, String status) {
 		logger.debug("update Problems status");
 		
 		
@@ -109,9 +109,12 @@ public class ProblemsDao {
 		
 		Problems problems = new Problems();
 		problems.setStatus(status);
-		problems.setId(problemsId);
 		
-		int rt = mapper.updateByPrimaryKeySelective(problems);
+		ProblemsExample example = new ProblemsExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andProblemNoEqualTo(problemNo);
+		
+		int rt = mapper.updateByExampleSelective(problems, example);
 		logger.debug("Update done. RowCount={}", rt);
 		
 		return rt;

@@ -10,7 +10,7 @@ import com.frc.chooseoption.dao.ProblemsDao;
 import com.frc.chooseoption.entity.Problems;
 
 @Service
-public class QueryCfService {
+public class CfService {
 
 
 	@Autowired
@@ -21,6 +21,10 @@ public class QueryCfService {
 		List<Problems> res=problemsDao.queryCf(sdate, edate, type,status,name);
 		
 		return res;
+	}
+	
+	public int updateCfStatus(String problemsNo,String status) {
+		return problemsDao.udpateProblems(problemsNo, status);
 	}
 	
 }

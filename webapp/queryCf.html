@@ -44,10 +44,11 @@
 						</div>
 						<div id="qfilter" class="panel-collapse collapse in"  role="tabpanel" aria-labelledby="qfilter">
 							<div class="panel-body">
-								<form role="form" style="margin:20px 20px 20px">
+								<div>
 								  <div class="form-group">
 									<label for="filterUser">User</label>
 									<select id="filterUser" class="form-control" onchange="selected()">
+									  <option value="" selected="selected">请选择</option>
 									  <option value="Could">Could</option>
 									  <option value="DFS">DFS</option>
 									</select>
@@ -71,13 +72,27 @@
 								  <label><input name="Status" type="radio" value="1" />已完成</label>
 								  <label><input name="Status" type="radio" value="" checked="true" />全部</label>
 								  </div>
-								  <button type="submit" class="btn btn-primary btn-lg"  onclick="queryCfResult()">查询</button>
-								</form>
+								  <button class="btn btn-primary btn-lg"  onclick="queryCfResult()">查询</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 		</div>
+	</div>
+	<div id="groupMsgBox">
+			<div class="alert alert-danger" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>失败</strong><div class="content"></div>
+			</div>
+			<div class="alert alert-success" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>成功</strong><div class="content"></div>
+			</div>
 	</div>
 	<div class="panel panel-primary"
 			style="max-width: 1000px; width: auto;">
@@ -86,7 +101,6 @@
 				<div id="resultList"></div>
 			</div>
 		</div>
-	
 	
 
 </body>

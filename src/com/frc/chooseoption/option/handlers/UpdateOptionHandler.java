@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import com.frc.appleframework.beans.IRequest;
 import com.frc.appleframework.exception.AppleException;
 import com.frc.appleframework.hanlders.AbstractHandler;
-import com.frc.chooseoption.beans.CreateOptionRequest;
-import com.frc.chooseoption.beans.QueryOptionRequest;
 import com.frc.chooseoption.beans.UpdateOptionRequest;
-import com.frc.chooseoption.entity.Option;
 import com.frc.chooseoption.service.OptionService;
 
 import net.sf.json.JSONObject;

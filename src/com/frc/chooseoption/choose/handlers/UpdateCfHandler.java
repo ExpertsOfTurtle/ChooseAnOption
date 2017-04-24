@@ -12,27 +12,28 @@ import com.frc.appleframework.exception.AppleException;
 import com.frc.appleframework.hanlders.AbstractHandler;
 import com.frc.chooseoption.beans.ChooseOptionRequest;
 import com.frc.chooseoption.beans.QueryCfRequest;
+import com.frc.chooseoption.beans.UpdateCfRequest;
 import com.frc.chooseoption.group.handlers.CreateGroupHandler;
 import com.frc.chooseoption.service.ChooseService;
 import com.frc.chooseoption.service.CfService;
 
 import net.sf.json.JSONObject;
 
-@Service("QueryCfHandler")
-public class QueryCfHandler extends AbstractHandler{
+@Service("UpdateCfHandler")
+public class UpdateCfHandler extends AbstractHandler{
 
-	private static Logger logger  =  LoggerFactory.getLogger(CreateGroupHandler.class);
+	private static Logger logger  =  LoggerFactory.getLogger(UpdateCfHandler.class);
 	
 	@Autowired
-	protected CfService queryCfService = null;
+	protected CfService updateCfService = null;
 	
 	@Override
 	public void process(IRequest request) throws AppleException {
-		QueryCfRequest req = (QueryCfRequest) request;
+		UpdateCfRequest req = (UpdateCfRequest) request;
 		
 		logger.debug("QueryCfHandler_request:" + JSONObject.fromObject(req).toString());
 		
-		List res = queryCfService.querycf(req.getSdate(), req.getEdate(), req.getType(), req.getStatus(), req.getName());
+		int res = updateCfService.updateCfStatus(req.getProblemNo(),req.getStatus());
 		
 		putRequestData("res", res);
 	}

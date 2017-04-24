@@ -1,0 +1,8 @@
+{
+	"requestBeanType" : "com.frc.chooseoption.beans.UpdateCfRequest",
+	"handlers" : [
+		"UpdateCfHandler"
+	],
+	"response" : "vm/choose/group/updateCf.vm",
+	"error" : "vm/error.vm"
+}

@@ -1,0 +1,4 @@
+<div>
+	<p>update cfstatus</p>
+	result: ${res}
+</div>

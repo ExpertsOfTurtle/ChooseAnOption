@@ -44,25 +44,30 @@ public class ChooseService {
 			JSONObject param=new JSONObject();
 			if(qryact.isEmpty()){
 				List<Option> optn=optionDao.queryOption(groupid);
-				int sum=0; 
-				int[] tmp=new int[optn.size()];
-				for(int i=0;i<optn.size();i++){
-					sum += optn.get(i).getProbability();
-					tmp[i]=sum;
-					
-				}
-				int rdmno=(int)(Math.random()*sum);
-				for(int j=0;j<optn.size();j++){
-					if(rdmno<tmp[j]){
-						param.put("result", optn.get(j).getOptionname());
-						param.put("id", groupid.intValue());
-						break;
+				if(!optn.isEmpty()){
+					int sum=0; 
+					int[] tmp=new int[optn.size()];
+					for(int i=0;i<optn.size();i++){
+						sum += optn.get(i).getProbability();
+						tmp[i]=sum;
+						
 					}
+					int rdmno=(int)(Math.random()*sum);
+					for(int j=0;j<optn.size();j++){
+						if(rdmno<tmp[j]){
+							param.put("result", optn.get(j).getOptionname());
+							param.put("id", groupid.intValue());
+							break;
+						}
+					}
+					chooseactivity.addActivity("CD", param);
+					res=chooseactivity.queryActivity("CD", date,date,groupid.intValue());
+				}else{
+					Activity act=new Activity();
+					act.setDescription("分组没有选项可以抽取！");
+					res.add(act);
 				}
-				chooseactivity.addActivity("CD", param);
 			}
-			res=chooseactivity.queryActivity("CD", date,date,groupid.intValue());
-			
 		}
 		return res;
 	}

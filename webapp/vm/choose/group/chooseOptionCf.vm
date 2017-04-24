@@ -14,30 +14,33 @@
 			#foreach ($opt in $res)
 				<tr onclick=";">
 					<td>
-						<input type="text" class="form-control"
-						name="problemNo" value="${opt.problemNo}"></input>
-						<input type="hidden" name="problemNoorginal" value="${opt.problemNo}"></input>
+						<p type="text" class="form-control" name="date">${opt.date}</p>
 					</td>
 					<td>
-						<input type="text" class="form-control"
-						name="type" value="${opt.type}"></input>
-						<input type="hidden" name="typeorginal" value="${opt.type}"></input>
+					#set($str=${opt.problemNo})
+					#if($str.length()>30)
+					#set($str=$str.substring(41,46))
+					 #end
+						<a href="${opt.problemNo}" class="form-control"
+						name="problemNo" target="_blank">$str</a>
 					</td>
 					<td>
-						<input type="text" class="form-control"
-						name="status" value="${opt.status}"></input>
-						<input type="hidden" name="statusorginal" value="${opt.status}"></input>
+						<p type="text" class="form-control" name="type">${opt.type}</p>
 					</td>
 					<td>
-						<input type="text" class="form-control"
-						name="respondent" value="${opt.respondent}"></input>
-						<input type="hidden" name="respondentorginal" value="${opt.respondent}"></input>
+						<p type="text" class="form-control" name="status">${opt.status}</p>
+						
 					</td>
 					<td>
-						<button class="btn btn-primary btn-lg" onclick="javascript:updCfStatus($('#problemid').val())">
+						<p type="text" class="form-control" name="respondent">${opt.respondent}</p>
+					</td>
+					#if(${opt.status}!=1)
+					<td>
+						<button class="btn btn-primary btn-lg" onclick="javascript:updCfStatus('${opt.problemNo}')">
 						Íê³É
 						</button>
 					</td>
+					#end
 				</tr>
 			#end	
 		</tbody>

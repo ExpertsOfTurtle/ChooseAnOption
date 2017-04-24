@@ -57,4 +57,6 @@ function chooseOption(groupid) {
 	});
 }
 
-}
+
+
+
