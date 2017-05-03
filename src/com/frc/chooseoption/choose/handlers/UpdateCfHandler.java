@@ -30,10 +30,16 @@ public class UpdateCfHandler extends AbstractHandler{
 	@Override
 	public void process(IRequest request) throws AppleException {
 		UpdateCfRequest req = (UpdateCfRequest) request;
-		
-		logger.debug("QueryCfHandler_request:" + JSONObject.fromObject(req).toString());
-		
-		int res = updateCfService.updateCfStatus(req.getProblemNo(),req.getStatus());
+		int res =0;
+		if(req.getRequestType().equals("updStatus")){
+			logger.debug("QueryCfHandler_request:" + JSONObject.fromObject(req).toString());
+			
+			res = updateCfService.updateCfStatus(req.getProblemNo(),req.getStatus());
+			
+			
+		}else if(req.getRequestType().equals("addPunishProNo")){
+			res=(int)updateCfService.insertPunishProblem(req.getRespondent(), req.getType());
+		}
 		
 		putRequestData("res", res);
 	}

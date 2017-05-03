@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.frc.appleframework.exception.AppleException;
 import com.frc.chooseoption.dao.ProblemsDao;
 import com.frc.chooseoption.entity.Problems;
+import com.frc.chooseoption.util.DateUtil;
 
 @Service
 public class CfService {
@@ -27,4 +28,8 @@ public class CfService {
 		return problemsDao.udpateProblems(problemsNo, status);
 	}
 	
+	public long insertPunishProblem(String respondent,String type){
+		String date=DateUtil.getTodayDate();
+		return problemsDao.addProblems("Punishment", date, respondent, "0", type);
+	}
 }

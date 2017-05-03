@@ -36,7 +36,7 @@
 					</td>
 					#if(${opt.status}!=1)
 					<td>
-						<button class="btn btn-primary btn-lg" onclick="javascript:updCfStatus('${opt.problemNo}')">
+						<button id="finish" class="btn btn-primary btn-lg" onclick="javascript:updCfStatus('${opt.problemNo}')">
 						Íê³É
 						</button>
 					</td>
