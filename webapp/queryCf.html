@@ -6,7 +6,8 @@
 <script src="boostrap/js/jquery-2.2.0.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="boostrap/js/bootstrap.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="boostrap/js/bootstrap-modal.js"></script>
 <link type="text/css"
 	href="boostrap/css/custom-theme/jquery-ui-1.10.0.custom.css"
 	rel="stylesheet" />
@@ -29,14 +30,6 @@
 
 <!-- for date-picker
 		-->
-<style type="text/css">
-   .mask{margin:0;padding:0;border:none;width:100%;height:100%;background:#333;opacity:0.6;filter:alpha(opacity=60);z-index:9999;position:fixed;top:0;left:0;display:none;}
-#modal{position:absolute;left:20%;top:30%;width:30%;height:40%;border:1%;border-radius:1%;z-index:10000;display:none;}
-
-#addbtn{text-decoration:none;padding:2% 15%;margin-left:7%;margin-top:10%;border-radius:1%;opacity:0.8;filter:alpha(opacity=80);}
-#close{text-decoration:none;padding:2% 15%;margin-left:53%;margin-top:-10.8%;border-radius:1%;opacity:0.8;filter:alpha(opacity=80);}
-
-    </style>
 
 </head>
 
@@ -110,70 +103,43 @@
 				<div id="resultList"></div>
 			</div>
 	</div>
-	<div class="panel panel-primary" id="modal">
-		<div class="panel-heading" >罚题录入</div>
-		<div class="panel-body">
-		<div class="modal-bg">
-			
 	
-			<select id="filterUser2" class="form-control" onchange="selected()">
-				<option value="Could">Could</option>
-				<option value="DFS">DFS</option>
-			</select>
-			</br>
-			<select id="problemNoType" class="form-control" onchange="selected()">
-				<option value="P">普通罚题</option>
-				<option value="H">高级罚题</option>
-				<option value="B">装逼作死罚题</option>
-			</select>
-			</br>
-			
-			<button class="btn btn-primary btn-lg" id="addbtn" onclick="addCfProblem()">确定</button>
-			<button class="btn btn-primary btn-lg" id="close">取消</button>
-			
-		</div>
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">  
+			<div class="modal-content"> 
+				<div class="modal-header">
+            		<button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+                    <span aria-hidden="true">×</span>  
+                	</button>  
+                	 <h4 class="modal-title" id="myModalLabel">罚题录入</h4>  
+                </div>
+       			<div class="modal-body">
+            		<select id="filterUser2"  onchange="selected()">
+						<option value="Could">Could</option>
+						<option value="DFS">DFS</option>	
+					</select>
+					<br />
+					<select id="problemNoType" onchange="selected()">
+						<option value="P">普通罚题</option>
+						<option value="H">高级罚题</option>
+						<option value="B">装逼作死罚题</option>
+					</select>
+					<br />
+					<lable>罚题数：</lable><intput id="problemNum"  type="text"></intput>
+       			</div>	
+				<div class="modal-footer"> 
+            		<button type="button" class="btn btn-primary" onclick="addCfProblem()">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>			
+       			</div>
+			</div>
 		</div>
 	</div>
-
-  	<script type="text/javascript">
-	$(function ($) {
-		//弹出
-		$("#addpunishment").hover(function () {
-			$(this).stop().animate({
-				opacity: '1'
-			}, 600);
-		}, function () {
-			$(this).stop().animate({
-				opacity: '0.6'
-			}, 1000);
-		}).on('click', function () {
-			$("body").append("<div id='mask'></div>");
-			$("#mask").addClass("mask").fadeIn("slow");
-			$("#modal").fadeIn("slow");
-		});
-		//
-		//按钮的透明度
-		$("#addbtn").hover(function () {
-			$(this).stop().animate({
-				opacity: '1'
-			}, 600);
-		}, function () {
-			$(this).stop().animate({
-				opacity: '0.8'
-			}, 1000);
-		}).on('click', function () {
-			$("#modal").fadeOut("fast");
-			$("#mask").css({ display: 'none' });
-		});
-		
-		//关闭
-		$("#close").hover(function () { $(this).css({ color: 'black' }) }, function () { $(this).css({ color: '#999' }) }).on('click', function () {
-			$("#modal").fadeOut("fast");
-			$("#mask").css({ display: 'none' });
-		});
-	});
-	</script>	
 </body>
-
+<script type="text/javascript">
+	$(function ()  
+		{ $("#myModal")).modal('show'); 
+		});
+</script>
 
 </html>

@@ -22,23 +22,27 @@ public class ProblemsDao {
 	@Autowired
 	protected SqlSessionFactory sessionFactory = null;
 	
-	public long addProblems(String problemNo, String date, String respondent, String status, String type) {
+	public long addProblems(String problemNo, String date, String respondent, String status, 
+			String type, int num, String deadline) {
 		logger.debug("Add Problem [problemId={},problemNo={},date={},respondent={},status={},type={}]", 
 				problemNo, date, respondent, status, type);
 		SqlSession session = sessionFactory.openSession();
 		
 		ProblemsMapper mapper = session.getMapper(ProblemsMapper.class);
-		
-		Problems problems = new Problems();
-		problems.setProblemNo(problemNo);
-		problems.setDate(date);
-		problems.setRespondent(respondent);
-		problems.setStatus(status);
-		problems.setType(type);
-		mapper.insert(problems);
-		
-		long id = problems.getId();
-		logger.debug("problemsId={},problemsNo={}", id, problems.getProblemNo());
+		long id=0;
+		for(int i=0;i<num;i++){
+			Problems problems = new Problems();
+			problems.setProblemNo(problemNo);
+			problems.setDate(date);
+			problems.setRespondent(respondent);
+			problems.setStatus(status);
+			problems.setType(type);
+			problems.setDeadline(deadline);
+			mapper.insert(problems);
+			id = problems.getId();
+			logger.debug("problemsId={},problemsNo={}", id, problems.getProblemNo());
+		}
+
 		return id;
 	}
 	public List<Problems> queryCf(String sdate,String edate) {

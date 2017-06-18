@@ -28,8 +28,15 @@ public class CfService {
 		return problemsDao.udpateProblems(problemsNo, status);
 	}
 	
-	public long insertPunishProblem(String respondent,String type){
+	public long insertPunishProblem(String respondent,String type,int num,String deadline){
 		String date=DateUtil.getTodayDate();
-		return problemsDao.addProblems("Punishment", date, respondent, "0", type);
+		if(deadline.equals("-1")){
+			if(type.equals("B")){
+				deadline=DateUtil.getDateAfterYear();
+			}else{
+				deadline=DateUtil.getSundayOfThisWeek();
+			}
+		}
+		return problemsDao.addProblems("Punishment", date, respondent, "0", type, num, deadline);
 	}
 }

@@ -12,8 +12,18 @@ public class Problems {
     private String status;
 
     private String type;
+    
+    private String deadline;
 
-    public Long getId() {
+    public String getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+
+	public Long getId() {
         return id;
     }
 

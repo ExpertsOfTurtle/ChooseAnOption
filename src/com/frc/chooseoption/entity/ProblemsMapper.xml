@@ -104,10 +104,11 @@
   <insert id="insert" parameterType="com.frc.chooseoption.entity.Problems"
   useGeneratedKeys="true" keyProperty="id">
     insert into problems (id, problem_no, date, 
-      respondent, status, type
+      respondent, status, type, deadline
       )
     values (#{id,jdbcType=BIGINT}, #{problemNo,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, 
-      #{respondent,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
+      #{respondent,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+      #{deadline,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.frc.chooseoption.entity.Problems">

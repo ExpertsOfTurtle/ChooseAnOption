@@ -7,7 +7,21 @@ public class UpdateCfRequest extends AppleRequest {
 	protected String status;
 	protected String respondent;
 	protected String type;
+	protected int num;
+	protected String deadline;
 	
+	public int getNum() {
+		return num;
+	}
+	public String getDeadline() {
+		return deadline;
+	}
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getProblemNo() {
 		return problemNo;
 	}

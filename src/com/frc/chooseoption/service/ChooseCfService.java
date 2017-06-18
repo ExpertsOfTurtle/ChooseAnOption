@@ -60,7 +60,7 @@ public class ChooseCfService {
 					}
 				}
 				type_wf = String.format("http://codeforces.com/problemset/problem/%d/%s", proId,type_wf);
-				problemsDao1.addProblems(type_wf, sdate, "DFS", "0", "A");
+				problemsDao1.addProblems(type_wf, sdate, "DFS", "0", "A",1,"-1");
 			}
 			for(int j=0;j<5;j++ ){
 				proId=(int) Math.round(Math.random()*d)+x;
@@ -72,7 +72,7 @@ public class ChooseCfService {
 					}
 				}
 				type_c = String.format("http://codeforces.com/problemset/problem/%d/%s", proId,type_c);
-				problemsDao1.addProblems(type_c, sdate, "Could", "0", "A");
+				problemsDao1.addProblems(type_c, sdate, "Could", "0", "A",1,"-1");
 			}
 		}
 		problems=problemsDao1.queryCf(sdate, edate, type,"","");
