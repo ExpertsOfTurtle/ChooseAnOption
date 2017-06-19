@@ -79,14 +79,20 @@ function updCfStatus(problemid) {
 function addCfProblem() {
 	var respondent=$("#filterUser2").val();
 	var type=$("#problemNoType").val();
-	var num=$("#problemNum").val()
-	var num=$("#deadline").val()
+	var num=$("#problemNum").val();
+	var deadline=$("#deadlineT").val()
+	if(deadline.length==0){
+		deadline="-1";
+	}
+	if(num.length==0){
+		num=1;
+	}
 	var param = {
 		"requestType" : "addPunishProNo",
 		"respondent" : respondent,
 		"type" : type,
 		"num" : num,
-		"deadline" : deadline
+		"deadline" : deadline 
 	}
 	$.ajax({
 		type : "POST",
