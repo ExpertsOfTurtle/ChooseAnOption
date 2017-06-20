@@ -115,15 +115,15 @@
                 	 <h4 class="modal-title" id="myModalLabel">罚题录入</h4>  
                 </div>
        			<div class="modal-body">
-            		<select id="filterUser2"  onchange="selected()">
+            		<select id="filterUser2"  class="form-control" onchange="selected()">
 						<option value="Could">Could</option>
 						<option value="DFS">DFS</option>	
 					</select>
 					<br />
-					<select id="problemNoType" onchange="selected()">
+					<select id="problemNoType" class="form-control" onchange="selected()">
 						<option value="P">普通罚题</option>
 						<option value="H">高级罚题</option>
-						<option value="B">装逼作死罚题</option>
+						<option value="B">装逼作死罚题</option> 
 					</select>
 					<br />
 					<lable>罚题数：</lable>
@@ -133,7 +133,7 @@
 					<textarea  id="deadlineT"  class="form-control"  type="text" ></textarea>
        			</div>
 				<div class="modal-footer"> 
-            		<button type="button" class="btn btn-primary" onclick="addCfProblem()">确定</button>
+            		<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addCfProblem()">确定</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>			
        			</div>
 			</div>
