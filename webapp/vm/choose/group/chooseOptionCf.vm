@@ -3,6 +3,7 @@
 	<table class="table table-condensed table-hover">
 		<thead>
 			<tr>
+			    <th>日期</th>
 				<th>题目</th>
 				<th>类型</th>
 				<th>状态</th>
@@ -36,7 +37,7 @@
 					</td>
 					#if(${opt.status}!=1)
 					<td>
-						<button id="finish" class="btn btn-primary btn-lg" onclick="javascript:updCfStatus('${opt.problemNo}')">
+						<button id="finish" class="btn btn-primary btn-lg" onclick="javascript:updCfStatus('${opt.id}','${opt.type}')">
 						完成
 						</button>
 					</td>

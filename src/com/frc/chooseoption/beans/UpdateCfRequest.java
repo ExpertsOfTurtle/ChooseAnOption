@@ -3,6 +3,8 @@ package com.frc.chooseoption.beans;
 import com.frc.appleframework.beans.AppleRequest;
 
 public class UpdateCfRequest extends AppleRequest {
+	protected long problemId;
+	
 	protected String problemNo;
 	protected String status;
 	protected String respondent;
@@ -10,6 +12,12 @@ public class UpdateCfRequest extends AppleRequest {
 	protected int num;
 	protected String deadline;
 	
+	public long getProblemId() {
+		return problemId;
+	}
+	public void setProblemId(long problemId) {
+		this.problemId = problemId;
+	}
 	public int getNum() {
 		return num;
 	}

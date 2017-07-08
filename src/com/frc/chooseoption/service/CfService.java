@@ -24,8 +24,12 @@ public class CfService {
 		return res;
 	}
 	
-	public int updateCfStatus(String problemsNo,String status) {
-		return problemsDao.udpateProblems(problemsNo, status);
+	public int updateCfStatus(long problemId,String problemNo,String status) {
+		if(problemNo.isEmpty()){
+			return problemsDao.udpateProblems(problemId, status);
+		}else{
+			return problemsDao.udpatePunishProblems(problemId, problemNo, status);
+		}
 	}
 	
 	public long insertPunishProblem(String respondent,String type,int num,String deadline){

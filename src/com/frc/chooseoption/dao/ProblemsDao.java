@@ -104,7 +104,7 @@ public class ProblemsDao {
 		
 		return rt;
 	}
-	public int udpateProblems(String problemNo, String status) {
+	public int udpateProblems(long problemId, String status) {
 		logger.debug("update Problems status");
 		
 		
@@ -116,7 +116,28 @@ public class ProblemsDao {
 		
 		ProblemsExample example = new ProblemsExample();
 		Criteria criteria = example.createCriteria();
-		criteria.andProblemNoEqualTo(problemNo);
+		criteria.andIdEqualTo(problemId);
+		
+		int rt = mapper.updateByExampleSelective(problems, example);
+		logger.debug("Update done. RowCount={}", rt);
+		
+		return rt;
+	}
+	
+	public int udpatePunishProblems(long problemId, String problemNo,String status) {
+		logger.debug("update Problems status");
+		
+		
+		SqlSession session = sessionFactory.openSession();
+		ProblemsMapper mapper = session.getMapper(ProblemsMapper.class);
+		
+		Problems problems = new Problems();
+		problems.setStatus(status);
+		problems.setProblemNo(problemNo);;
+		
+		ProblemsExample example = new ProblemsExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andIdEqualTo(problemId);
 		
 		int rt = mapper.updateByExampleSelective(problems, example);
 		logger.debug("Update done. RowCount={}", rt);

@@ -33,7 +33,7 @@ public class UpdateCfHandler extends AbstractHandler{
 		int res =0;
 		if(req.getRequestType().equals("updStatus")){
 			logger.debug("QueryCfHandler_request:" + JSONObject.fromObject(req).toString());
-			res = updateCfService.updateCfStatus(req.getProblemNo(),req.getStatus());
+			res = updateCfService.updateCfStatus(req.getProblemId(),req.getProblemNo(),req.getStatus());
 			
 		}else if(req.getRequestType().equals("addPunishProNo")){
 			res=(int)updateCfService.insertPunishProblem(req.getRespondent(), req.getType(), 

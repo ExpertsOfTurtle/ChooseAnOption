@@ -76,6 +76,10 @@
 								  <button class="btn btn-primary btn-lg"  onclick="queryCfResult()">查询</button>
 								  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">增加罚题</button>
 								</div>
+								<div>
+									<lable>完成题目：</lable>
+									<textarea  id="problemNo"  class="form-control"  type="text" ></textarea>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -139,10 +143,11 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 <script type="text/javascript">
 	$(function ()  
-		{ $("#myModal")).modal('show'); 
+		{ $("#myModal").modal('show');   
 		});
 </script>
 
