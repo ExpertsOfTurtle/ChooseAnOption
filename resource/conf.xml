@@ -7,7 +7,7 @@
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://119.29.24.34:3306/turtle" />
+                <property name="url" value="jdbc:mysql://turtlebone.top:3306/turtle" />
                 <property name="username" value="mysql" />
                 <property name="password" value="mysql" />
             </dataSource>
