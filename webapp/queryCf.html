@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<script src="queryCf.js"></script>
 <link rel="stylesheet" href="boostrap/css/bootstrap.min.css"></link>
 <!-- jQuery library -->
 <script src="boostrap/js/jquery-2.2.0.min.js"></script>
@@ -16,7 +17,7 @@
 	rel="stylesheet" />
 
 <link type="text/css" href="common.css" rel="stylesheet" />
-<script src="queryCf.js"></script>
+
 <!--[if IE 7]>
             <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
             <![endif]-->
@@ -64,7 +65,9 @@
 								  <div class="form-group" id="type">
 								  <label for="dateFrom">题目类型：</label>
 								  <label><input name="Type" type="radio" value="A" />抽题 </label>
-								  <label><input name="Type" type="radio" value="P" />罚题 </label>
+								  <label><input name="Type" type="radio" value="P" />普通罚题 </label>
+								  <label><input name="Type" type="radio" value="H" />高级罚题 </label>
+								  <label><input name="Type" type="radio" value="B" />高级罚题 </label>
 								  <label><input name="Type" type="radio" value="" checked="true" />全部</label>
 								  </div>
 								  <div class="form-group" id="status">
@@ -145,10 +148,6 @@
 	</div>
 
 </body>
-<script type="text/javascript">
-	$(function ()  
-		{ $("#myModal").modal('show');   
-		});
-</script>
+
 
 </html>
